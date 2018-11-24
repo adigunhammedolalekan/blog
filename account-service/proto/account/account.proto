@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package service.account;
+
+service AccountService {
+
+    rpc CreateAccount(Account) returns (Response) {}
+    rpc Authenticate(Account) returns (Response) {}
+    rpc GetAccount(GetAccountRequest) returns (Response) {}
+}
+
+message Account {
+
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    string token = 4;
+    string password = 5;
+}
+
+message Response {
+
+    bool status = 1;
+    string message = 2;
+    Account account = 3;
+}
+
+message GetAccountRequest {
+
+    string userId = 1;
+}
